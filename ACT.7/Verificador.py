@@ -51,3 +51,4 @@ for i in range(0 + shift, n + shift):
     
 # Output
 print(f"The integration of {f_x} is {area:.2f}")
+# Preparado para entrega final
