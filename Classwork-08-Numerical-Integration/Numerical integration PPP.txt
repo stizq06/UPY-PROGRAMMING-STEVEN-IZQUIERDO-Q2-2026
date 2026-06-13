@@ -1,0 +1,50 @@
+# Input
+GET a, b, f_x, method FROM user
+
+IF "pi" is in a THEN
+    a <- REPLACE "pi" in a WITH value of math.pi
+    a <- EVALUATE a
+ELSE
+    a <- CONVERT a TO float
+ENDIF
+
+IF "pi" is in b THEN
+    b <- REPLACE "pi" in b WITH value of math.pi
+    b <- EVALUATE b
+ELSE
+    b <- CONVERT b TO float
+ENDIF
+
+n <- 1000
+area <- 0.0
+shift <- 0
+constant <- 0
+
+# Process
+h <- (b - a) / n
+
+IF method is equal to "RRM" THEN
+    shift <- 1
+ELSE IF method is equal to "MPM" THEN
+    constant <- h / 2
+ENDIF
+
+FOR i IN RANGE (0 + shift, n + shift) DO
+    IF method is equal to "TRAP" THEN
+        # Altura promediada para el método del Trapecio
+        xi_left <- a + i * h
+        xi_right <- a + (i + 1) * h
+        height_left <- EVALUATE f_x at xi_left
+        height_right <- EVALUATE f_x at xi_right
+        height <- (height_left + height_right) / 2
+    ELSE
+        # Lógica original para LRM, RRM y MPM
+        xi <- a + i * h + constant
+        height <- EVALUATE f_x at xi
+    ENDIF
+
+    area <- area + height * h
+ENDFOR
+
+# Output
+DISPLAY "The integration of " + f_x + " is " + area
