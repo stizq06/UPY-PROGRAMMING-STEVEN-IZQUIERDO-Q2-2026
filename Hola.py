@@ -1,1 +1,0 @@
-print("Universidad Politecnica de Yucatán")
