@@ -1,0 +1,39 @@
+# INPUT
+GET verb FROM user
+
+# PROCESS
+stem <- characters of verb from start to length-2
+ending <- last 2 characters of verb
+
+IF ending is equal to "ar" THEN
+    yo <- stem + "o"
+    tu <- stem + "as"
+    el <- stem + "a"
+    nosotros <- stem + "amos"
+    ellos <- stem + "an"
+ELSE IF ending is equal to "er" THEN
+    yo <- stem + "o"
+    tu <- stem + "es"
+    el <- stem + "e"
+    nosotros <- stem + "emos"
+    ellos <- stem + "en"
+ELSE IF ending is equal to "ir" THEN
+    yo <- stem + "o"
+    tu <- stem + "es"
+    el <- stem + "e"
+    nosotros <- stem + "imos"
+    ellos <- stem + "en"
+ELSE
+    yo <- "Invalid"
+    tu <- "Invalid"
+    el <- "Invalid"
+    nosotros <- "Invalid"
+    ellos <- "Invalid"
+ENDIF
+
+# OUTPUT
+DISPLAY "Yo " + yo
+DISPLAY "Tu " + tu
+DISPLAY "El/Ella/Usted " + el
+DISPLAY "Nosotros " + nosotros
+DISPLAY "Ellos/Ellas/Ustedes " + ellos
